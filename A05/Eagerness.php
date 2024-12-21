@@ -1,14 +1,16 @@
 <?php include('connect.php');
 
-$faithQuery = 'SELECT * FROM islandcontents WHERE islandOfPersonalityID = 1 and islandContentID = 1;';
-$faithResults = executeQuery($faithQuery);
+// Fetch Drive content for island personality 4
+$driveQuery = 'SELECT * FROM islandcontents WHERE islandOfPersonalityID = 4 AND islandContentID = 10;';
+$driveResults = executeQuery($driveQuery);
 
-$hopeQuery = 'SELECT * FROM islandcontents WHERE islandOfPersonalityID = 1 and islandContentID = 2;';
-$hopeResults = executeQuery($hopeQuery);
+// Fetch Desire content for island personality 4
+$desireQuery = 'SELECT * FROM islandcontents WHERE islandOfPersonalityID = 4 AND islandContentID = 11;';
+$desireResults = executeQuery($desireQuery);
 
-$optimismQuery = 'SELECT * FROM islandcontents WHERE islandOfPersonalityID = 1 and islandContentID = 3;';
-$optimismResults = executeQuery($optimismQuery);
-
+// Fetch Hardwork content for island personality 4
+$hardworkQuery = 'SELECT * FROM islandcontents WHERE islandOfPersonalityID = 4 AND islandContentID = 12;';
+$hardworkResults = executeQuery($hardworkQuery);
 ?>
 
 <!DOCTYPE html>
@@ -100,61 +102,51 @@ $optimismResults = executeQuery($optimismQuery);
   </header>
 
   <!-- Add a background color and large text to the whole page -->
-  <div class="w3-sand w3-grayscale w3-large">
-    <!-- Faith content -->
-    <?php if (mysqli_num_rows($faithResults) > 0) {
-      while ($faithRow = mysqli_fetch_assoc($faithResults)) {
+  <div class="w3-sand w3-grayscale w3-large" id="personalities">
+
+    <!-- Drive content -->
+    <?php if (mysqli_num_rows($driveResults) > 0) {
+      while ($driveRow = mysqli_fetch_assoc($driveResults)) {
     ?>
-
-        <!-- About Faith -->
-        <div class="w3-container" id="personalities" data-aos="fade-up" data-aos-delay="200">
-          <div class="w3-content" style="max-width:700px">
-            <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide" style="background-color: <?php echo $faithRow['color'] ?>; color: white;">FAITH</span></h5>
-
-            <p><?php echo $faithRow['content']; ?></p>
-
-            <img src="/assets/<?php echo $faithRow['image']; ?>" style="width:100%;max-width:1000px" class="w3-margin-top" data-aos="zoom-in" data-aos-delay="300">
-          </div>
+      <div class="w3-container" id="about" data-aos="fade-up" data-aos-delay="200">
+        <div class="w3-content" style="max-width:700px">
+          <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide" style="background-color: <?php echo $driveRow['color']; ?>; color: white;">DRIVE</span></h5>
+          <p><?php echo $driveRow['content']; ?></p>
+          <img src="/assets/<?php echo $driveRow['image']; ?>" style="width:100%;max-width:1000px" class="w3-margin-top" data-aos="zoom-in" data-aos-delay="300">
         </div>
+      </div>
     <?php
       }
     }
     ?>
 
-    <!-- Hope content -->
-    <?php if (mysqli_num_rows($hopeResults) > 0) {
-      while ($hopeRow = mysqli_fetch_assoc($hopeResults)) {
+    <!-- Desire content -->
+    <?php if (mysqli_num_rows($desireResults) > 0) {
+      while ($desireRow = mysqli_fetch_assoc($desireResults)) {
     ?>
-
-        <!-- About Hope -->
-        <div class="w3-container" id="about" data-aos="fade-up" data-aos-delay="400">
-          <div class="w3-content" style="max-width:700px">
-            <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide" style="background-color: <?php echo $hopeRow['color'] ?>; color: white;">HOPE</span></h5>
-            <p><?php echo $hopeRow['content']; ?></p>
-
-            <img src="/assets/<?php echo $hopeRow['image']; ?>" style="width:100%;max-width:1000px" class="w3-margin-top" data-aos="zoom-in" data-aos-delay="500">
-          </div>
+      <div class="w3-container" id="about" data-aos="fade-up" data-aos-delay="400">
+        <div class="w3-content" style="max-width:700px">
+          <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide" style="background-color: <?php echo $desireRow['color']; ?>; color: white;">DESIRE</span></h5>
+          <p><?php echo $desireRow['content']; ?></p>
+          <img src="/assets/<?php echo $desireRow['image']; ?>" style="width:100%;max-width:1000px" class="w3-margin-top" data-aos="zoom-in" data-aos-delay="500">
         </div>
+      </div>
     <?php
       }
     }
     ?>
 
-    <!-- Optimism content -->
-    <?php if (mysqli_num_rows($optimismResults) > 0) {
-      while ($optimismRow = mysqli_fetch_assoc($optimismResults)) {
+    <!-- Hardwork content -->
+    <?php if (mysqli_num_rows($hardworkResults) > 0) {
+      while ($hardworkRow = mysqli_fetch_assoc($hardworkResults)) {
     ?>
-
-        <!-- About Optimism -->
-        <div class="w3-container" id="where" style="padding-bottom:32px;" data-aos="fade-up" data-aos-delay="600">
-          <div class="w3-content" style="max-width:700px">
-            <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide" style="background-color: <?php echo $optimismRow['color'] ?>; color: white;">OPTIMISM</span></h5>
-            <p>“Sometimes when you're in a dark place you think you've been buried, but you've actually been planted.” – Christine Caine</p>
-            <img src="/assets/<?php echo $optimismRow['image']; ?>" class="w3-image" style="width:100%" data-aos="zoom-in" data-aos-delay="700">
-            <p><span class="w3-tag">ALWAYS!</span> <?php echo $optimismRow['content']; ?> </p>
-          </div>
+      <div class="w3-container" id="where" style="padding-bottom:32px;" data-aos="fade-up" data-aos-delay="600">
+        <div class="w3-content" style="max-width:700px">
+          <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide" style="background-color: <?php echo $hardworkRow['color']; ?>; color: white;">HARDWORK</span></h5>
+          <p><?php echo $hardworkRow['content']; ?></p>
+          <img src="/assets/<?php echo $hardworkRow['image']; ?>" class="w3-image" style="width:100%" data-aos="zoom-in" data-aos-delay="700">
         </div>
-
+      </div>
     <?php
       }
     }

@@ -1,13 +1,16 @@
 <?php include('connect.php');
 
-$faithQuery = 'SELECT * FROM islandcontents WHERE islandOfPersonalityID = 1 and islandContentID = 1;';
-$faithResults = executeQuery($faithQuery);
+// Fetch Heroism content for island personality 2
+$heroismQuery = 'SELECT * FROM islandcontents WHERE islandOfPersonalityID = 2 and islandContentID = 4;';
+$heroismResults = executeQuery($heroismQuery);
 
-$hopeQuery = 'SELECT * FROM islandcontents WHERE islandOfPersonalityID = 1 and islandContentID = 2;';
-$hopeResults = executeQuery($hopeQuery);
+// Fetch Determination content for island personality 2
+$determinationQuery = 'SELECT * FROM islandcontents WHERE islandOfPersonalityID = 2 and islandContentID = 5;';
+$determinationResults = executeQuery($determinationQuery);
 
-$optimismQuery = 'SELECT * FROM islandcontents WHERE islandOfPersonalityID = 1 and islandContentID = 3;';
-$optimismResults = executeQuery($optimismQuery);
+// Fetch Boldness content for island personality 2
+$boldnessQuery = 'SELECT * FROM islandcontents WHERE islandOfPersonalityID = 2 and islandContentID = 6;';
+$boldnessResults = executeQuery($boldnessQuery);
 
 ?>
 
@@ -100,60 +103,59 @@ $optimismResults = executeQuery($optimismQuery);
   </header>
 
   <!-- Add a background color and large text to the whole page -->
-  <div class="w3-sand w3-grayscale w3-large">
-    <!-- Faith content -->
-    <?php if (mysqli_num_rows($faithResults) > 0) {
-      while ($faithRow = mysqli_fetch_assoc($faithResults)) {
+  <div class="w3-sand w3-grayscale w3-large" id="personalities">
+
+    <!-- Heroism content -->
+    <?php if (mysqli_num_rows($heroismResults) > 0) {
+      while ($heroismRow = mysqli_fetch_assoc($heroismResults)) {
     ?>
 
-        <!-- About Faith -->
-        <div class="w3-container" id="personalities" data-aos="fade-up" data-aos-delay="200">
-          <div class="w3-content" style="max-width:700px">
-            <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide" style="background-color: <?php echo $faithRow['color'] ?>; color: white;">FAITH</span></h5>
-
-            <p><?php echo $faithRow['content']; ?></p>
-
-            <img src="/assets/<?php echo $faithRow['image']; ?>" style="width:100%;max-width:1000px" class="w3-margin-top" data-aos="zoom-in" data-aos-delay="300">
-          </div>
+      <!-- About Heroism -->
+      <div class="w3-container" id="about" data-aos="fade-up" data-aos-delay="200">
+        <div class="w3-content" style="max-width:700px">
+          <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide" style="background-color: <?php echo $heroismRow['color'] ?>; color: white;">HEROISM</span></h5>
+          <p><?php echo $heroismRow['content']; ?></p>
+          <img src="/assets/<?php echo $heroismRow['image']; ?>" style="width:100%;max-width:1000px" class="w3-margin-top" data-aos="zoom-in" data-aos-delay="300">
         </div>
+      </div>
+
     <?php
       }
     }
     ?>
 
-    <!-- Hope content -->
-    <?php if (mysqli_num_rows($hopeResults) > 0) {
-      while ($hopeRow = mysqli_fetch_assoc($hopeResults)) {
+    <!-- Determination content -->
+    <?php if (mysqli_num_rows($determinationResults) > 0) {
+      while ($determinationRow = mysqli_fetch_assoc($determinationResults)) {
     ?>
 
-        <!-- About Hope -->
-        <div class="w3-container" id="about" data-aos="fade-up" data-aos-delay="400">
-          <div class="w3-content" style="max-width:700px">
-            <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide" style="background-color: <?php echo $hopeRow['color'] ?>; color: white;">HOPE</span></h5>
-            <p><?php echo $hopeRow['content']; ?></p>
-
-            <img src="/assets/<?php echo $hopeRow['image']; ?>" style="width:100%;max-width:1000px" class="w3-margin-top" data-aos="zoom-in" data-aos-delay="500">
-          </div>
+      <!-- About Determination -->
+      <div class="w3-container" id="about" data-aos="fade-up" data-aos-delay="400">
+        <div class="w3-content" style="max-width:700px">
+          <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide" style="background-color: <?php echo $determinationRow['color'] ?>; color: white;">DETERMINATION</span></h5>
+          <p><?php echo $determinationRow['content']; ?></p>
+          <img src="/assets/<?php echo $determinationRow['image']; ?>" style="width:100%;max-width:1000px" class="w3-margin-top" data-aos="zoom-in" data-aos-delay="500">
         </div>
+      </div>
+
     <?php
       }
     }
     ?>
 
-    <!-- Optimism content -->
-    <?php if (mysqli_num_rows($optimismResults) > 0) {
-      while ($optimismRow = mysqli_fetch_assoc($optimismResults)) {
+    <!-- Boldness content -->
+    <?php if (mysqli_num_rows($boldnessResults) > 0) {
+      while ($boldnessRow = mysqli_fetch_assoc($boldnessResults)) {
     ?>
 
-        <!-- About Optimism -->
-        <div class="w3-container" id="where" style="padding-bottom:32px;" data-aos="fade-up" data-aos-delay="600">
-          <div class="w3-content" style="max-width:700px">
-            <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide" style="background-color: <?php echo $optimismRow['color'] ?>; color: white;">OPTIMISM</span></h5>
-            <p>“Sometimes when you're in a dark place you think you've been buried, but you've actually been planted.” – Christine Caine</p>
-            <img src="/assets/<?php echo $optimismRow['image']; ?>" class="w3-image" style="width:100%" data-aos="zoom-in" data-aos-delay="700">
-            <p><span class="w3-tag">ALWAYS!</span> <?php echo $optimismRow['content']; ?> </p>
-          </div>
+      <!-- About Boldness -->
+      <div class="w3-container" id="where" style="padding-bottom:32px;" data-aos="fade-up" data-aos-delay="600">
+        <div class="w3-content" style="max-width:700px">
+          <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide" style="background-color: <?php echo $boldnessRow['color'] ?>; color: white;">BOLDNESS</span></h5>
+          <p><span class="w3-tag">ALWAYS!</span><?php echo $boldnessRow['content']; ?></p>
+          <img src="/assets/<?php echo $boldnessRow['image']; ?>" class="w3-image" style="width:100%" data-aos="zoom-in" data-aos-delay="700">
         </div>
+      </div>
 
     <?php
       }
@@ -167,7 +169,7 @@ $optimismResults = executeQuery($optimismQuery);
     <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a></p>
   </footer>
 
-  <!-- AOS script -->
+  <!-- AOS Script -->
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script>
     AOS.init(); // Initialize AOS
