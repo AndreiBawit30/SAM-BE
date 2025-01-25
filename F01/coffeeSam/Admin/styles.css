@@ -1,0 +1,151 @@
+:root {
+  --main-bg-color: #6F4F28; 
+  --main-text-color: #6F4F28; 
+  --second-text-color: #D1B29E; 
+  --second-bg-color: #E9D8A6; 
+  --sidebar-bg-color: #FFF9E1; 
+  --sidebar-text-color: #3E2C41; 
+  --icon-color: #3E2C41; 
+  --icon-hover-color: #6F4F28; 
+  --border-color: #D9C6A1; 
+}
+
+
+.primary-text {
+  color: var(--main-text-color);
+}
+
+.second-text {
+  color: var(--second-text-color);
+}
+
+.primary-bg {
+  background-color: var(--main-bg-color);
+}
+
+.secondary-bg {
+  background-color: var(--second-bg-color);
+}
+
+
+#sidebar-wrapper {
+  min-height: 100vh;
+  margin-left: -15rem;
+  transition: margin 0.25s ease-out;
+  background-color: var(--sidebar-bg-color);
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+#sidebar-wrapper .sidebar-heading {
+  padding: 1.25rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: var(--main-text-color);
+  border-bottom: 2px solid var(--border-color);
+}
+
+#sidebar-wrapper .list-group {
+  width: 15rem;
+}
+
+#sidebar-wrapper .list-group-item {
+  border: none;
+  padding: 20px 30px;
+  color: var(--sidebar-text-color);
+  font-weight: 500;
+}
+
+#sidebar-wrapper .list-group-item.active {
+  background-color: transparent;
+  color: var(--main-text-color);
+  font-weight: bold;
+}
+
+#sidebar-wrapper .list-group-item:hover {
+  background-color: var(--second-bg-color);
+  color: var(--main-text-color);
+}
+
+#sidebar-wrapper .sidebar-icon {
+  color: var(--icon-color);
+  font-size: 1.5rem;
+  transition: color 0.3s;
+}
+
+#sidebar-wrapper .list-group-item:hover .sidebar-icon {
+  color: var(--icon-hover-color); 
+}
+
+
+#page-content-wrapper {
+  min-width: 100vw;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+  margin-left: 0;
+}
+
+
+.navbar {
+  background-color: transparent;
+  padding: 1rem 2rem;
+}
+
+.navbar .fs-2 {
+  color: var(--main-text-color);
+  font-weight: bold;
+}
+
+
+.card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+  padding: 2rem;
+  background-color: var(--sidebar-bg-color);
+}
+
+.card-header {
+  background-color: var(--main-bg-color);
+  color: white;
+  font-size: 1.5rem;
+}
+
+
+#menu-toggle {
+  cursor: pointer;
+}
+
+
+.fs-1, .fs-2 {
+  font-weight: bold;
+}
+
+
+.sidebar-icon:hover, .list-group-item:hover {
+  color: var(--main-text-color);
+  background-color: var(--second-bg-color);
+}
+
+
+@media (min-width: 768px) {
+  #sidebar-wrapper {
+    margin-left: 0;
+  }
+
+  #page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+  }
+
+  #wrapper.toggled #sidebar-wrapper {
+    margin-left: -15rem;
+  }
+}
+
+.list-group-item.active, .list-group-item:hover {
+  background-color: var(--second-bg-color);
+  color: var(--main-text-color);
+}
